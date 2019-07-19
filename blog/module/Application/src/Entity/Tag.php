@@ -13,13 +13,13 @@ class Tag
 {
     /**
      * @ORM\Id
-     * @ORM\Column(name="id")
-     * @ORM\GeneratedValue
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /** 
-     * @ORM\Column(name="name") 
+     * @ORM\Column(name="name", type="string", length=50)
      */
     protected $name;
 
@@ -90,4 +90,3 @@ class Tag
         $this->posts[] = $post;        
     }
 }
-

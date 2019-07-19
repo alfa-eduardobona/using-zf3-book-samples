@@ -12,23 +12,23 @@ class Comment
 {
     /**
      * @ORM\Id
-     * @ORM\Column(name="id")
-     * @ORM\GeneratedValue
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /** 
-     * @ORM\Column(name="content")  
+     * @ORM\Column(name="content", type="text", length=2048)
      */
     protected $content;
 
     /** 
-     * @ORM\Column(name="author")  
+     * @ORM\Column(name="author", type="string", length=100)
      */
     protected $author;
     
     /** 
-     * @ORM\Column(name="date_created")  
+     * @ORM\Column(name="date_created", type="datetime")
      */
     protected $dateCreated;
 

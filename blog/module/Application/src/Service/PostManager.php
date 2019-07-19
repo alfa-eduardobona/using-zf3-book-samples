@@ -37,12 +37,12 @@ class PostManager
         $post->setTitle($data['title']);
         $post->setContent($data['content']);
         $post->setStatus($data['status']);
-        $currentDate = date('Y-m-d H:i:s');
+        $currentDate = new \DateTime();
         $post->setDateCreated($currentDate);        
         
         // Add the entity to entity manager.
         $this->entityManager->persist($post);
-        
+
         // Add tags to post
         $this->addTagsToPost($data['tags'], $post);
         

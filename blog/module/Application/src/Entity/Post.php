@@ -17,28 +17,28 @@ class Post
 
     /**
      * @ORM\Id
-     * @ORM\Column(name="id")
-     * @ORM\GeneratedValue
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /** 
-     * @ORM\Column(name="title")  
+     * @ORM\Column(name="title", type="string", length=255)
      */
     protected $title;
 
     /** 
-     * @ORM\Column(name="content")  
+     * @ORM\Column(name="content", type="text")
      */
     protected $content;
 
     /** 
-     * @ORM\Column(name="status")  
+     * @ORM\Column(name="status", type="integer")
      */
     protected $status;
 
     /**
-     * @ORM\Column(name="date_created")  
+     * @ORM\Column(name="date_created", type="datetime")
      */
     protected $dateCreated;
     
