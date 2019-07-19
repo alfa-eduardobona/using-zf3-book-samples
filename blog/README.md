@@ -1,15 +1,16 @@
 Blog Sample
 ==================================================
 
-This sample is based on the Hello World sample and it shows how to:
+Este exemplo é baseado em "Hello World" desenvolvido em Zend 3 e demontra:
 
-  * Integrate your web site with the Doctrine library
-  * Initialize the database schema
-  * Use the entity manager
-  * Create entities and define relationships between entities
-  * Create repositories
+  * Integração do site com a biblioteca Doctrine
+  * Usando EntityManager
+  * Criando entidades
+  * Criando e parametrizando propriedades
+  * Definindo relacionamento entre entidades
+  * Criando repositórios
 
-## Installation
+## Instalação
 
 You need to have Apache 2.4 HTTP server, PHP v.5.6 or later and MySQL v.5.6 or later.
 
