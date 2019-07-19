@@ -19,14 +19,6 @@ Download the sample to some directory (it can be your home dir or `/var/www/html
 php composer.phar install
 ```
 
-The command above will install the dependencies (Zend Framework and Doctrine).
-
-Enable development mode:
-
-```
-php composer.phar development-enable
-```
-
 Adjust permissions for `data` directory:
 
 ```
@@ -66,6 +58,34 @@ Alternatively, you can run database migrations:
 
 ```
 ./vendor/bin/doctrine-module migrations:migrate
+```
+
+## Development Mode
+
+The command above will install the dependencies (Zend Framework and Doctrine).
+
+Enable development mode:
+
+```
+composer development-enable
+```
+
+## Zend Developer Tools
+
+Adicione no término do array de módulos do zend o módulo ZendDeveloperTools
+
+```
+// config/modules.config.php
+<?php
+
+return [
+    ...
+    ...
+    ...
+    'Application',
+    'ZendDeveloperTools'
+];
+
 ```
 
 Then create an Apache virtual host. It should look like below:
