@@ -1,95 +1,105 @@
-Blog Sample
+Blog de Exemplo
 ==================================================
 
-This sample is based on the Hello World sample and it shows how to:
+Este exemplo é baseado em "Hello World" desenvolvido em Zend 3 e demontra:
 
-  * Integrate your web site with the Doctrine library
-  * Initialize the database schema
-  * Use the entity manager
-  * Create entities and define relationships between entities
-  * Create repositories
+  * Integração do site com a biblioteca Doctrine
+  * Usando EntityManager
+  * Criando entidades
+  * Criando e parametrizando propriedades
+  * Definindo relacionamento entre entidades
+  * Criando repositórios
 
-## Installation
+## Instalação
 
-You need to have Apache 2.4 HTTP server, PHP v.5.6 or later and MySQL v.5.6 or later.
+### Requisitos
 
-Download the sample to some directory (it can be your home dir or `/var/www/html`) and run Composer as follows:
+- php >= 7.*
+- php-cli instalando (verificar php -v)
+- composer instalado (verificar composer -v)
+- mysql >= 5.6
+- (opcional) phpmnyadmin
+- (opciona)) mysql-client (verificar mysql -v)
 
-```
-php composer.phar install
-```
-
-The command above will install the dependencies (Zend Framework and Doctrine).
-
-Enable development mode:
-
-```
-php composer.phar development-enable
-```
-
-Adjust permissions for `data` directory:
+### Baixando
 
 ```
-sudo chown -R www-data:www-data data
-sudo chmod -R 775 data
+mkdir projeto-base
+git clone git clone https://github.com/alfa-eduardobona/using-zf3-book-samples.git projeto-base
+cd projeto-base/blog
 ```
 
-Create `config/autoload/local.php` config file by copying its distrib version:
+### Instalando
+
+```
+composer install
+```
+
+### Rodando o projeto
+
+```
+php -S localhost:9001 -t public
+```
+
+### Rodando o projeto pela primeira vez
+
+Para executar o projeto pela primeira vez é bom se certificar que a 
+pasta data tem permissões de escrita e leitura e escrita
+
+```
+chmod -R 775 data/
+```
+
+Copie o arquivo de configuração e edite de acordo com sua configuração de banco de dados.
 
 ```
 cp config/autoload/local.php.dist config/autoload/local.php
 ```
 
-Edit `config/autoload/local.php` and set database password parameter.
+Confira o seguinte:
 
-Login to MySQL client:
+- Se a conexão com banco de dados está funcionando (pode ser via phpmyadmin ou via comando mysql -h xxx -u xxx -p
+- Se ainda não tiver criado uma base, crie-a com o nome que preferir (exemplo zf3_blog)
+- Garanta que os dados de usuário e senha utilizados para conectar enxergam esta base
 
-```
-mysql -u root -p
-```
+## Development Mode
 
-Create database:
-
-```
-CREATE DATABASE blog;
-GRANT ALL PRIVILEGES ON blog.* TO blog@localhost identified by '<your_password>';
-quit
-```
-
-Create tables and import data to database:
+Habilite o modo de desenvolvimento (apenas em ambiente de desenvolvimento)
 
 ```
-mysql -u root -p blog < data/schema.mysql.sql
+composer development-enable
 ```
 
-Alternatively, you can run database migrations:
+## Zend Developer Tools
+
+Adicione no término do array de módulos do zend o módulo ZendDeveloperTools
 
 ```
-./vendor/bin/doctrine-module migrations:migrate
+// config/modules.config.php
+<?php
+
+return [
+    ...
+    ...
+    ...
+    'Application',
+    'ZendDeveloperTools'
+];
+
 ```
 
-Then create an Apache virtual host. It should look like below:
+## Projeto Base
 
-```
-<VirtualHost *:80>
-    DocumentRoot /path/to/blog/public
-    
-	<Directory /path/to/blog/public/>
-        DirectoryIndex index.php
-        AllowOverride All
-        Require all granted
-    </Directory>
+Este projeto é um fork do [repositório](https://github.com/olegkrivtsov/using-zf3-book-samples/tree/master/blog) com alterações pontuais como:
 
-</VirtualHost>
-```
-After creating the virtual host, restart Apache.
+- definição dos tipos de dados (columns, tipos e tamanhos)
+- remoção do suporte a migrations (que será adicionado em momento oportuno)
+- correções em entidades
 
-Now you should be able to see the Blog website by visiting the link "http://localhost/". 
- 
-## License
+## License (original)
 
 This code is provided under the [BSD-like license](https://en.wikipedia.org/wiki/BSD_licenses). 
 
-## Contributing
+## Contributing (original)
 
 If you found a mistake or a bug, please report it using the [Issues](https://github.com/olegkrivtsov/using-zf3-book-samples/issues) page. Your feedback is highly appreciated.
