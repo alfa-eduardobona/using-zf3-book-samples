@@ -12,12 +12,28 @@ Este exemplo é baseado em "Hello World" desenvolvido em Zend 3 e demontra:
 
 ## Instalação
 
-You need to have Apache 2.4 HTTP server, PHP v.5.6 or later and MySQL v.5.6 or later.
+### Requisitos
 
-Download the sample to some directory (it can be your home dir or `/var/www/html`) and run Composer as follows:
+- php >= 7.*
+- php-cli instalando (verificar php -v)
+- composer instalado (verificar composer -v)
+- mysql >= 5.6
+- (opcional) phpmnyadmin
+- (opciona)) mysql-client (verificar mysql -v)
+
+### Baixando
 
 ```
-php composer.phar install
+mkdir projeto-base
+git clone git clone https://github.com/alfa-eduardobona/using-zf3-book-samples.git projeto-base
+cd projeto-base/blog
+```
+
+### Instalando
+
+```
+composer install
+php -S localhost:9001 -t public
 ```
 
 Adjust permissions for `data` directory:
