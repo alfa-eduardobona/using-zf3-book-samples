@@ -33,55 +33,38 @@ cd projeto-base/blog
 
 ```
 composer install
+```
+
+### Rodando o projeto
+
+```
 php -S localhost:9001 -t public
 ```
 
-Adjust permissions for `data` directory:
+### Rodando o projeto pela primeira vez
+
+Para executar o projeto pela primeira vez é bom se certificar que a 
+pasta data tem permissões de escrita e leitura e escrita
 
 ```
-sudo chown -R www-data:www-data data
-sudo chmod -R 775 data
+chmod -R 775 data/
 ```
 
-Create `config/autoload/local.php` config file by copying its distrib version:
+Copie o arquivo de configuração e edite de acordo com sua configuração de banco de dados.
 
 ```
 cp config/autoload/local.php.dist config/autoload/local.php
 ```
 
-Edit `config/autoload/local.php` and set database password parameter.
+Confira o seguinte:
 
-Login to MySQL client:
-
-```
-mysql -u root -p
-```
-
-Create database:
-
-```
-CREATE DATABASE blog;
-GRANT ALL PRIVILEGES ON blog.* TO blog@localhost identified by '<your_password>';
-quit
-```
-
-Create tables and import data to database:
-
-```
-mysql -u root -p blog < data/schema.mysql.sql
-```
-
-Alternatively, you can run database migrations:
-
-```
-./vendor/bin/doctrine-module migrations:migrate
-```
+- Se a conexão com banco de dados está funcionando (pode ser via phpmyadmin ou via comando mysql -h xxx -u xxx -p
+- Se ainda não tiver criado uma base, crie-a com o nome que preferir (exemplo zf3_blog)
+- Garanta que os dados de usuário e senha utilizados para conectar enxergam esta base
 
 ## Development Mode
 
-The command above will install the dependencies (Zend Framework and Doctrine).
-
-Enable development mode:
+Habilite o modo de desenvolvimento (apenas em ambiente de desenvolvimento)
 
 ```
 composer development-enable
@@ -105,28 +88,18 @@ return [
 
 ```
 
-Then create an Apache virtual host. It should look like below:
+## Projeto Base
 
-```
-<VirtualHost *:80>
-    DocumentRoot /path/to/blog/public
-    
-	<Directory /path/to/blog/public/>
-        DirectoryIndex index.php
-        AllowOverride All
-        Require all granted
-    </Directory>
+Este projeto é um fork do [repositório](https://github.com/olegkrivtsov/using-zf3-book-samples/tree/master/blog) com alterações pontuais como:
 
-</VirtualHost>
-```
-After creating the virtual host, restart Apache.
+- definição dos tipos de dados (columns, tipos e tamanhos)
+- remoção do suporte a migrations (que será adicionado em momento oportuno)
+- correções em entidades
 
-Now you should be able to see the Blog website by visiting the link "http://localhost/". 
- 
-## License
+## License (original)
 
 This code is provided under the [BSD-like license](https://en.wikipedia.org/wiki/BSD_licenses). 
 
-## Contributing
+## Contributing (original)
 
 If you found a mistake or a bug, please report it using the [Issues](https://github.com/olegkrivtsov/using-zf3-book-samples/issues) page. Your feedback is highly appreciated.
