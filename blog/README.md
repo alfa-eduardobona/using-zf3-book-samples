@@ -70,24 +70,6 @@ Habilite o modo de desenvolvimento (apenas em ambiente de desenvolvimento)
 composer development-enable
 ```
 
-## Zend Developer Tools
-
-Adicione no término do array de módulos do zend o módulo ZendDeveloperTools
-
-```
-// config/modules.config.php
-<?php
-
-return [
-    ...
-    ...
-    ...
-    'Application',
-    'ZendDeveloperTools'
-];
-
-```
-
 ## Projeto Base
 
 Este projeto é um fork do [repositório](https://github.com/olegkrivtsov/using-zf3-book-samples/tree/master/blog) com alterações pontuais como:
