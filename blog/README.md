@@ -1,4 +1,4 @@
-Blog Sample
+Blog de Exemplo
 ==================================================
 
 Este exemplo é baseado em "Hello World" desenvolvido em Zend 3 e demontra:
